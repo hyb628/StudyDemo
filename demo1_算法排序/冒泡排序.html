@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	var str = [],
+	    str2 = [];
+	for(var k =0;k<1000;k++) {
+		str[k] = parseInt(Math.random() * 100);
+	}
+	str2= str;
+	
+	console.time('star');
+	//总体来说，冒泡排序的效率是较为低下的，在数据量小的情况下可以使用，否则应该选择其他的排序算法。
+	// 冒泡排序
+	function bubbleSort(arr) {
+		var temp = null;
+		var len = arr.length;
+		for (var i =0;i<len-1;i++) {  //外层循环n-1次
+			for (var j = 0;j<len-1-i;j++) { //内层每次循环n-1-i次
+				if(arr[j]>arr[j+1]){
+					temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+//					console.log(arr);
+				}
+			}
+		}
+		return arr;
+	}
+	console.log('冒泡排序：'+bubbleSort(str)); // 输出结果
+	console.timeEnd('star')
+	// 冒泡排序优化
+	console.time('star2');
+//	var str2 = [1,2,3,4,5,6,7];
+	function bubbleSort1(arr){        
+		var n=arr.length;        
+		var temp=null;        
+		var flag=false;//设置标志位，初始值为false        
+		for(var i=0; i<n-1; i++){            
+			for(var j=0; j<n-1-i; j++){                
+				if(arr[j]>arr[j+1]){                
+					temp=arr[j];                    
+					arr[j]=arr[j+1];                    
+					arr[j+1]=temp;                    
+					flag=true;//只要交换了标识就设为true  
+					console.log(arr)
+				}
+			}        
+			if(flag){//只要交换了位置，flag的值就重新设置为false                
+				flag=false;            
+			}else{//如果没有交换，说明数组已经排好序，可以结束循环了  
+				console.log('break')
+				break;
+			}        
+		} 
+		return arr;    
+	}
+
+	console.log('冒泡排序优化：'+bubbleSort1(str2)); // 输出结果
+	console.timeEnd('star2');
+	
+// 执行时间对比 ：
+//	star: 3.110ms
+//	star2: 0.873ms
+	</script>
+</body>
+</html>
