@@ -12,3 +12,8 @@
 		
 		插入排序
 		
+
+
+
+####2、demo2_README语法
+> 「语法教程 https://github.com/guodongxiaren/README」
