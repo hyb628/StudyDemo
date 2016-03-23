@@ -6,12 +6,13 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-			var str = [];
-			for(var k =0;k<10;k++) {
+			var str = [],str1 = [];
+			for(var k =0;k<10000;k++) {
 				str[k] = parseInt(Math.random() * 1000);
 			}
+			str1 = str.slice(0);
 			// 快速排序
-			console.time('star');
+//			console.time('star');
 			function quickSort(arr) {
 				var len = arr.length;
 				if(len<=1) {
@@ -36,10 +37,27 @@
 				return quickSort(left).concat(indexArr,quickSort(right))
 				// 递归思想不断重复
 			}
-			console.log(quickSort(str));
-			console.timeEnd('star');
 			
-			// star: 4.104ms
+			  console.time('star');
+			  
+			  		quickSort(str);
+			 
+			  console.timeEnd('star');
+			
+			
+			// star: 23.798ms
+			console.log(str1)
+			
+			// sort 排序  V8引擎依据快排进行优化
+			console.time('sort');
+			function sortArr(a,b) {
+				return a-b;
+			}
+			
+			str1.sort(sortArr);
+			console.timeEnd('sort');
+			console.log(str1[4000])
+			// sort: 6.769ms
 		</script>
 	</body>
 </html>
