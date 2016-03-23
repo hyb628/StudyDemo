@@ -6,8 +6,12 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-		var str = [2,5,7,9,0];
+			var str = [];
+			for(var k =0;k<10;k++) {
+				str[k] = parseInt(Math.random() * 1000);
+			}
 			// 快速排序
+			console.time('star');
 			function quickSort(arr) {
 				var len = arr.length;
 				if(len<=1) {
@@ -33,7 +37,7 @@
 				// 递归思想不断重复
 			}
 			console.log(quickSort(str));
-			
+			console.timeEnd('star');
 		</script>
 	</body>
 </html>
