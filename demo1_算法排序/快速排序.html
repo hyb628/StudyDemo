@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		var str = [2,5,7,9,0];
+			// 快速排序
+			function quickSort(arr) {
+				var len = arr.length;
+				if(len<=1) {
+					return arr;
+				}
+				var index = Math.floor(len/2);
+				var indexArr = arr.splice(index,1); //选取中间值   或者用indexArr = [arr[index]];
+//				console.log(indexArr);
+				var left = [],right = [];
+				
+				for (var i = 0;i<arr.length;i++) {
+//					if(arr[i] < indexArr[0]) { //小雨基准点放进left中
+//						left.push(arr[i]);
+//					} else { //大于基准点放right中
+//						right.push(arr[i])
+//					}
+
+					arr[i] < indexArr[0]?left.push(arr[i]):right.push(arr[i]);	
+					
+				}
+			
+				return quickSort(left).concat(indexArr,quickSort(right))
+				// 递归思想不断重复
+			}
+			console.log(quickSort(str));
+			
+		</script>
+	</body>
+</html>
