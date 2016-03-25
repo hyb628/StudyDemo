@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>99乘法表</title>
+</head>
+<body>
+	<div id="contan"></div>
+	<script>
+		// for 循环
+
+		for (var i = 1; i <=9; i++) {
+			for (var j = 1; j <=i; j++) {
+				document.write(i + '*' + j +'='+i*j+' \t')
+			}
+			document.write('<br/>')
+		}
+
+
+		document.write('<br/>')
+
+
+
+		// while循环
+		var k = 1;
+		while(k<=9) {
+			var l = 1;
+			while(l<=k) {
+				document.write(k + '*' + l +'='+k*l+' \t');		
+				l++;
+			}
+			k++;
+			document.write('<br/>')	
+			
+		}
+	</script>
+</body>
+</html>
