@@ -17,3 +17,7 @@
 
 ####2、demo2_README语法
 > 「语法教程 https://github.com/guodongxiaren/README 」
+
+
+####3、demo3_乘法表
+> for循环 、while循环必备乘法表
