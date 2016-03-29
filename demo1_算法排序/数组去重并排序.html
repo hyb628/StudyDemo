@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重 排序</title>
+</head>
+<body>
+	<script>
+		var ary = [12, 23, 23, 12, 24, 34, 34, 23, 34, 5, 21, 2];
+
+		Array.prototype.myDisinct = function myDisinct() {
+		    var obj = {};
+		    for (var i =0;i<this.length;i++) {
+		        var cur = this[i];
+		        if (obj[cur] == cur) {
+		            this[i] = this[this.length - 1];
+		            this.length--;
+		            i--;
+		            continue;
+		        }
+		        obj[cur] = cur;
+		    }
+		    return this;
+		}
+
+		Array.prototype.mySortAry = function mySortAry( ){
+		   
+		    var temp = null;
+		    for (var i = 0; i < this.length - 1; i++) {
+		        for (var j = 0; j < this.length - 1 - i; j++) {
+		            if (this[j] < this[j + 1]) {
+		                temp = this[j];
+		                this[j] = this[j + 1];
+		                this[j + 1] = temp;
+		            }
+		        }
+		    }
+		    return this;
+		}
+		console.log('去重并排序数组：'+ ary.myDisinct().mySortAry());
+		
+	</script>
+</body>
+</html>
