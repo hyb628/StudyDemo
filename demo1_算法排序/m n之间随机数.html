@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求m n之间的随机数</title>
+</head>
+<body>
+	<script>
+	//获取随机数 求m n之间的随机数
+    function getRandom(n,m) {
+        if (typeof n === 'undefined' || typeof m ==='undefined') {
+            return Math.random();
+        }
+        
+        //判断是否为有效的数字:不管传递的是啥首先都转换为数字,这样n或者m只能是数字和NaN了
+        n = Number(n);
+        m = Number(m);
+        if (isNaN(m)||isNaN(n)) {
+            return Math.random();
+        }
+
+        //如果n>m让n和m交换位置
+        if (n>m) {
+            n = n + m;
+            m = n - m;
+            n = n - m;  
+        }
+        return Math.round(Math.random() * (m-n) +n);
+    }
+    getRandom(1,22);
+	</script>
+</body>
+</html>
