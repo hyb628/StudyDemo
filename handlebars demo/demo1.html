@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>each嵌套使用方法</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/handlebars.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			h1,
+			table {
+				margin: 0 auto;
+				text-align: center;
+			}
+			.hyb{
+				font-weight: bold;
+				font-size: 20px
+			}
+		</style>
+	</head>
+
+	<body>
+		
+	<!--Handlebars.js模版-->
+	<!--Handlebars.js模版放在script标签中，保留了html原有层次结构,模版中要写一些操作语句-->
+	<!--id可以用来唯一确定一个模版,type是模版固定的写法-->
+	<script id="table-template" type="text/x-handlebars-template">
+	    
+		<!-- {{{html2}}} -->
+
+		{{{link "huangyb.com"	title=story.title class='story' href=story.url}}}
+
+	</script>
+	<script type="text/javascript">
+		// $(function() {
+		
+		    var story = {
+		        "text": "Handlebars 中文网",
+		        "url": "http://handlebarsjs.org"
+		    }
+		
+
+		var myTemplate = Handlebars.registerHelper('link',function(text,object){
+
+			var attr = [];
+
+			for (var pro in object.hash) {
+				  attr.push(
+				  		Handlebars.escapeExpression(pro) + '="' 
+				  		+ Handlebars.escapeExpression(object.hash[pro]) + '"'
+				  );
+			}
+			return new safeString(
+				"<a" + attr.join(" ") + ">" +Handlebars.escapeExpression(text)+ "</a>"
+			);
+
+		})
+		$('body').html(myTemplate(story));
+
+			// //注册一个Handlebars模版，通过id找到某一个模版，获取模版的html框架
+			// var resource = $("#table-template").html();
+			// var myTemplate = Handlebars.compile(resource);
+			// //将json对象用刚刚注册的Handlebars模版封装，得到最终的html，插入到基础body中。
+			// console.log(myTemplate(data));
+			// $('body').html(myTemplate(data));
+		// })
+	</script>
+	</body>
+
+
+</html>
